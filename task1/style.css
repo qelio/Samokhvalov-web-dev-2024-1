@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    padding: 50px 0 40px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+.main-menu ul {
+    list-style: none;
+}
+
+.main-menu li {
+    display: inline;
+    margin-right: 30px;
+}
+
+.main-menu a {
+    font-weight: 400;
+    color: black;
+    text-decoration: none;
+}
+
+.main-menu a:hover {
+    color: #FF9684;
+}   
+
+.container {
+    max-width: 85%;
+    margin: 0 auto ;
+}
+.name-header {
+    margin-bottom: 50px;
+}
+
+.avatar {
+    margin-bottom: 10px;
+}
+
+.avatar > img {
+    height: 533px;
+    width: 800px
+}
+
+.about-text {
+    font-size: 16pt;
+    padding: 20px 0 30px 0;
+}
+
+.ul-advatages {
+    font-size: 15pt;
+    padding: 20px 0 30px 0;
+}
+
+.table-popular-dishes {
+    max-width: 50%;
+    margin: 20px 0 40px 0;
+}
+
+table {
+    font-size: 15pt;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+footer {
+    font-size: 15pt;
+    font-weight: 500;
+    background-color: black;
+    color: white;
+    padding: 40px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #FF9684;
+}
