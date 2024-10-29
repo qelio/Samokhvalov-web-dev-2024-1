@@ -31,16 +31,6 @@ function setupResetButton() {
     });
 }
 
-function setupAddButtons() {
-    document.querySelectorAll(".add-button").forEach(button => {
-        button.addEventListener("click", event => {
-            const dishKeyword = event.target.closest(".food-item").getAttribute("data-dish");
-            const dish = dishes.find(d => d.keyword === dishKeyword);
-            addToOrder(dish);
-        });
-    });
-}
-
 function getDishesCategory(keyword) {
     for (const dish of dishes) {
         if (dish.keyword === keyword) {
@@ -57,6 +47,22 @@ function getDishesPrice(keyword) {
         }
     }
     return undefined;
+}
+
+function updateTotal() {
+    let allItems = document.querySelectorAll(".food-item");
+    let totalSum = 0;
+    allItems.forEach(item => {
+        if (item.classList.contains("selected")) {
+            totalSum += getDishesPrice(item.getAttribute("data-dish"));
+        }
+    });
+    console.log(totalSum);
+    let orderCoast = document.querySelector(".order-item-coast");
+    orderCoast.innerHTML = `
+    <p><b>Стоимость заказа</b></p>
+    <p class="coast">${totalSum}&#x20bd;</p>
+    `;
 }
 
 function addToOrder(dish) {
@@ -96,27 +102,24 @@ function addToOrder(dish) {
     }
 
     document.querySelectorAll(".food-item").forEach(item => {
-        if (getDishesCategory(item.getAttribute("data-dish")) === dish.category) {
+        if (getDishesCategory(item
+            .getAttribute("data-dish")) === dish.category) {
             item.classList.remove("selected");
         }
     });
-    document.querySelector(`[data-dish="${dish.keyword}"]`).classList.add("selected");
+    document.querySelector(`[data-dish="${dish.keyword}"]`)
+        .classList.add("selected");
 
     updateTotal();
 }
 
-function updateTotal() {
-    let allItems = document.querySelectorAll(".food-item");
-    let totalSum = 0;
-    allItems.forEach(item => {
-        if(item.classList.contains("selected")) {
-            totalSum += getDishesPrice(item.getAttribute("data-dish"));
-        }
+function setupAddButtons() {
+    document.querySelectorAll(".add-button").forEach(button => {
+        button.addEventListener("click", event => {
+            const dishKeyword = event.target.closest(".food-item")
+                .getAttribute("data-dish");
+            const dish = dishes.find(d => d.keyword === dishKeyword);
+            addToOrder(dish);
+        });
     });
-    console.log(totalSum);
-    let orderCoast = document.querySelector(".order-item-coast");
-    orderCoast.innerHTML = `
-    <p><b>Стоимость заказа</b></p>
-    <p class="coast">${totalSum}&#x20bd;</p>
-    `;
 }
